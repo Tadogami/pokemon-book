@@ -14,6 +14,9 @@ export class PokemonDetailComponent implements OnInit {
 
   public radarChartOptions: RadialChartOptions = {
     responsive: true,
+    legend: {
+      display: false
+    }
   };
   public radarChartLabels: Label[] = ['体力', '攻撃力', '防御力', '素早さ'];
   public radarChartData: ChartDataSets[] = [];
@@ -29,11 +32,12 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemon = this.pokemons[id - 1];
       this.radarChartData.push({
         data: [
-          pokemon.base.HP,
-          pokemon.base.Attack,
-          pokemon.base.Defense,
-          pokemon.base.Speed
+          this.pokemon.base.HP,
+          this.pokemon.base.Attack,
+          this.pokemon.base.Defense,
+          this.pokemon.base.Speed
         ]
+
       });
     });
   }
